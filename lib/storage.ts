@@ -10,6 +10,7 @@ const DEFAULT_STATE: AppState = {
   lastResetDate: null,
   isPro: false,
   coins: 0,
+  dailyEarn: null,
 };
 
 export function todayISO(): string {

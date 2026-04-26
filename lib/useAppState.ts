@@ -69,6 +69,7 @@ export function useAppState() {
       box: 'inbox',
       status: 'open',
       completedAt: null,
+      coinsPending: false,
       createdAt: new Date().toISOString(),
       scheduledDate: null,
     };

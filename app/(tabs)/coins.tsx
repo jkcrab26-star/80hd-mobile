@@ -5,10 +5,10 @@ import { T } from '../../lib/theme';
 import { useApp } from '../../lib/AppContext';
 
 const REWARDS = [
-  { cost: 50, label: 'Skip a task (guilt-free)', icon: 'checkmark-circle-outline' },
-  { cost: 100, label: 'Unlock Week View', icon: 'calendar-outline' },
-  { cost: 200, label: 'Custom time boxes', icon: 'time-outline' },
-  { cost: 500, label: '1 month Pro free', icon: 'star-outline' },
+  { cost: 50, label: 'Streak Shield (protect a broken streak)', icon: 'shield-checkmark-outline' },
+  { cost: 100, label: 'Theme / skin pack', icon: 'color-palette-outline' },
+  { cost: 200, label: 'Export data pack (full task history)', icon: 'download-outline' },
+  { cost: 500, label: 'Unlock premium AI brain-sort', icon: 'sparkles-outline' },
 ];
 
 export default function CoinsScreen() {
@@ -29,23 +29,35 @@ export default function CoinsScreen() {
         <View style={styles.balanceCard}>
           <Text style={styles.balanceLabel}>Your Balance</Text>
           <Text style={styles.balanceAmount}>⬡ {coins}</Text>
-          <Text style={styles.balanceSub}>Earn 10 coins for every completed task</Text>
+          <Text style={styles.balanceSub}>Coins vest 30 min after task completion · 50 $80HD daily cap</Text>
         </View>
 
         {/* How it works */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>How Coins Work</Text>
+          <Text style={styles.sectionTitle}>How to Earn</Text>
           <View style={styles.infoRow}>
             <Ionicons name="checkmark-circle" size={20} color={T.am} />
-            <Text style={styles.infoText}>Complete a task → earn 10 $80HD</Text>
+            <Text style={styles.infoText}>Complete any task → +1 $80HD</Text>
           </View>
           <View style={styles.infoRow}>
-            <Ionicons name="timer" size={20} color={T.pm} />
-            <Text style={styles.infoText}>Focus mode bonus: +5 per session</Text>
+            <Ionicons name="sunny" size={20} color={T.am} />
+            <Text style={styles.infoText}>Finish full Morning box → +3 $80HD</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Ionicons name="partly-sunny" size={20} color={T.pm} />
+            <Text style={styles.infoText}>Finish full Afternoon box → +3 $80HD</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Ionicons name="moon" size={20} color={T.eve} />
+            <Text style={styles.infoText}>Finish full Evening box → +3 $80HD</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Ionicons name="trophy" size={20} color={T.coin} />
+            <Text style={styles.infoText}>Complete all 3 boxes in a day → +10 $80HD</Text>
           </View>
           <View style={styles.infoRow}>
             <Ionicons name="flame" size={20} color={T.danger} />
-            <Text style={styles.infoText}>Streak multiplier coming soon</Text>
+            <Text style={styles.infoText}>7-day streak → +20 $80HD</Text>
           </View>
         </View>
 

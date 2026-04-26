@@ -1,4 +1,5 @@
 export type BoxSlot = 'inbox' | 'AM' | 'PM' | 'Evening';
+export type EarnableBox = 'AM' | 'PM' | 'Evening';
 export type TaskStatus = 'open' | 'done';
 
 export interface Task {
@@ -10,6 +11,7 @@ export interface Task {
   completedAt: string | null;
   createdAt: string;
   scheduledDate: string | null;
+  coinsPending: boolean;
 }
 
 export interface DailyReflection {
@@ -26,6 +28,14 @@ export interface StreakData {
   lastActiveDate: string | null;
 }
 
+export interface DailyEarnLedger {
+  date: string;
+  earned: number;
+  boxBonusAwarded: Partial<Record<EarnableBox, boolean>>;
+  fullDayBonusAwarded: boolean;
+  streakBonusAwarded: boolean;
+}
+
 export interface AppState {
   tasks: Task[];
   reflections: DailyReflection[];
@@ -33,4 +43,5 @@ export interface AppState {
   lastResetDate: string | null;
   isPro: boolean;
   coins: number;
+  dailyEarn: DailyEarnLedger | null;
 }
