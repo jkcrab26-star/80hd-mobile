@@ -51,6 +51,9 @@ function TaskCard({
         )}
       </View>
 
+      {done && task.coinsPending && (
+        <View style={styles.pendingDot} />
+      )}
       {!done && (
         <TouchableOpacity onPress={onFocus} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
           <Ionicons name="timer-outline" size={20} color={color} />
@@ -206,4 +209,11 @@ const styles = StyleSheet.create({
   emptyIcon: { fontSize: 40, marginBottom: 12 },
   emptyTitle: { fontSize: 18, fontWeight: '600', color: T.text, marginBottom: 8 },
   emptyBody: { fontSize: 14, color: T.textDim, textAlign: 'center', lineHeight: 20 },
+  pendingDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: T.coin,
+    opacity: 0.7,
+  },
 });
