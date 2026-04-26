@@ -34,6 +34,8 @@ function updateStreak(state: AppState): AppState {
 interface AppContextValue {
   state: AppState | null;
   isBoxing: boolean;
+  showUpgrade: boolean;
+  setShowUpgrade: (v: boolean) => void;
   addTask: (title: string) => void;
   deleteTask: (id: string) => void;
   completeTask: (id: string) => void;
@@ -48,6 +50,7 @@ const AppContext = createContext<AppContextValue | null>(null);
 export function AppProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AppState | null>(null);
   const [isBoxing, setIsBoxing] = useState(false);
+  const [showUpgrade, setShowUpgrade] = useState(false);
   const saveRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -169,8 +172,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   return (
     <AppContext.Provider value={{
-      state, isBoxing, addTask, deleteTask, completeTask,
-      moveTask, setEstimate, boxAllWithAI, activatePro,
+      state, isBoxing, showUpgrade, setShowUpgrade,
+      addTask, deleteTask, completeTask, moveTask,
+      setEstimate, boxAllWithAI, activatePro,
     }}>
       {children}
     </AppContext.Provider>

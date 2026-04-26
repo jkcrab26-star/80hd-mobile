@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { T } from '../../lib/theme';
@@ -12,7 +12,7 @@ const REWARDS = [
 ];
 
 export default function CoinsScreen() {
-  const { state } = useApp();
+  const { state, setShowUpgrade } = useApp();
 
   if (!state) return <View style={styles.container} />;
 
@@ -76,6 +76,13 @@ export default function CoinsScreen() {
             <Text style={styles.tokenBadgeText}>Waitlist active</Text>
           </View>
         </View>
+
+        {!state.isPro && (
+          <TouchableOpacity style={styles.proBtn} onPress={() => setShowUpgrade(true)}>
+            <Ionicons name="star" size={18} color="#000" style={{ marginRight: 8 }} />
+            <Text style={styles.proBtnText}>Unlock Pro — earn 2× coins</Text>
+          </TouchableOpacity>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -141,4 +148,15 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   tokenBadgeText: { fontSize: 12, color: T.accent, fontWeight: '600' },
+  proBtn: {
+    marginHorizontal: 16,
+    marginTop: 16,
+    backgroundColor: T.accent,
+    borderRadius: T.radius,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15,
+  },
+  proBtnText: { color: '#000', fontSize: 15, fontWeight: '700' },
 });

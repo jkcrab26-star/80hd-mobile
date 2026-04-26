@@ -12,6 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#0a0a0a"
     },
+    "scheme": "80hd",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.80hd.app"
@@ -21,7 +22,15 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0a0a0a"
       },
-      "package": "com.hdapp.app80hd"
+      "package": "com.hdapp.app80hd",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [{ "scheme": "80hd" }],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",

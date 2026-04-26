@@ -20,6 +20,7 @@
     "expo-router": "~55.0.13",
     "expo-splash-screen": "*",
     "expo-status-bar": "*",
+    "expo-web-browser": "^55.0.14",
     "react": "19.0.0",
     "react-native": "0.79.2",
     "react-native-safe-area-context": "*",
