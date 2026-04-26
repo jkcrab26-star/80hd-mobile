@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   View,
   Text,
@@ -66,6 +65,7 @@ function TaskCard({
 export default function TodayScreen() {
   const { state, completeTask } = useApp();
 
+
   if (!state) return <View style={styles.container} />;
 
   const today = todayISO();
@@ -75,6 +75,8 @@ export default function TodayScreen() {
 
   const doneTodayCount = todayTasks.filter(t => t.status === 'done').length;
   const totalToday = todayTasks.filter(t => t.box !== 'inbox').length;
+  const todayReflection = state.reflections.find(r => r.date === today);
+  const showEndDay = doneTodayCount > 0 && !todayReflection;
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -130,6 +132,26 @@ export default function TodayScreen() {
             <Text style={styles.emptyTitle}>No tasks boxed yet</Text>
             <Text style={styles.emptyBody}>Go to Brain Dump, add your tasks, and tap "Box with AI"</Text>
           </View>
+        )}
+
+        {showEndDay && (
+          <TouchableOpacity
+            style={styles.endDayBtn}
+            onPress={() => router.push('/reflect')}
+          >
+            <Ionicons name="moon-outline" size={18} color={T.eve} style={{ marginRight: 8 }} />
+            <Text style={styles.endDayText}>End my day</Text>
+          </TouchableOpacity>
+        )}
+
+        {todayReflection && (
+          <TouchableOpacity
+            style={styles.reflectedBadge}
+            onPress={() => router.push('/reflect')}
+          >
+            <Ionicons name="checkmark-circle" size={15} color={T.am} style={{ marginRight: 6 }} />
+            <Text style={styles.reflectedText}>Day reflected · tap to view</Text>
+          </TouchableOpacity>
         )}
       </ScrollView>
     </SafeAreaView>
@@ -216,4 +238,26 @@ const styles = StyleSheet.create({
     backgroundColor: T.coin,
     opacity: 0.7,
   },
+  endDayBtn: {
+    marginHorizontal: 16,
+    marginTop: 12,
+    backgroundColor: T.surface,
+    borderRadius: T.radius,
+    borderWidth: 1,
+    borderColor: T.eve,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+  },
+  endDayText: { color: T.eve, fontSize: 15, fontWeight: '600' },
+  reflectedBadge: {
+    marginHorizontal: 16,
+    marginTop: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+  },
+  reflectedText: { color: T.textDim, fontSize: 13 },
 });

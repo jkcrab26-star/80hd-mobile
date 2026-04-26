@@ -124,6 +124,7 @@ interface AppContextValue {
   setEstimate: (id: string, minutes: number) => void;
   boxAllWithAI: () => Promise<void>;
   activatePro: () => void;
+  saveReflection: (q1: string, q2: string, q3: string) => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -261,11 +262,27 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setState(prev => prev ? { ...prev, isPro: true } : prev);
   }, []);
 
+  const saveReflection = useCallback((q1: string, q2: string, q3: string) => {
+    const today = todayISO();
+    const reflection = {
+      date: today,
+      q1: q1.trim(),
+      q2: q2.trim(),
+      q3: q3.trim(),
+      completedAt: new Date().toISOString(),
+    };
+    setState(prev => {
+      if (!prev) return prev;
+      const filtered = prev.reflections.filter(r => r.date !== today);
+      return { ...prev, reflections: [...filtered, reflection] };
+    });
+  }, []);
+
   return (
     <AppContext.Provider value={{
       state, isBoxing, showUpgrade, setShowUpgrade,
       addTask, deleteTask, completeTask, moveTask,
-      setEstimate, boxAllWithAI, activatePro,
+      setEstimate, boxAllWithAI, activatePro, saveReflection,
     }}>
       {children}
     </AppContext.Provider>
