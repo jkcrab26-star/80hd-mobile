@@ -1,0 +1,33 @@
+{
+  "name": "80hd-mobile",
+  "version": "0.1.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.91.1",
+    "@expo/vector-icons": "^14.0.4",
+    "@react-native-async-storage/async-storage": "^2.1.2",
+    "expo": "~55.0.17",
+    "expo-constants": "*",
+    "expo-font": "*",
+    "expo-haptics": "*",
+    "expo-linking": "*",
+    "expo-router": "~55.0.13",
+    "expo-splash-screen": "*",
+    "expo-status-bar": "*",
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-safe-area-context": "*",
+    "react-native-screens": "*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~19.0.10",
+    "typescript": "~5.8.3"
+  }
+}

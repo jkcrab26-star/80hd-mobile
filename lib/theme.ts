@@ -1,0 +1,16 @@
+export const T = {
+  bg: '#0a0a0a',
+  surface: '#111111',
+  border: '#1e1e1e',
+  accent: '#7c6fff',
+  accentDim: '#3d3580',
+  text: '#f0f0f0',
+  textDim: '#888',
+  danger: '#ff5a5a',
+  am: '#4ade80',
+  pm: '#fbbf24',
+  eve: '#818cf8',
+  coin: '#f59e0b',
+  radius: 12,
+  radiusSm: 8,
+} as const;
